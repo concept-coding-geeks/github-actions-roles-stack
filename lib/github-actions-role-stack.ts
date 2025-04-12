@@ -16,7 +16,7 @@ export class GithubActionsRoleStack extends Stack {
     );
 
     // IAM Role assumed by Github Actions
-    const githubRole = new iam.Role(this, "githubActionsRole", {
+    const githubActionsRole = new iam.Role(this, "githubActionsRole", {
       roleName: "github-actions-iam-role",
       description: "IAM Role for Github Actions to assume",
       assumedBy: new iam.OpenIdConnectPrincipal(
