@@ -7,7 +7,7 @@ export class GithubActionsRoleStack extends Stack {
 
     const identityProvider = new iam.OpenIdConnectProvider(
       this,
-      "IdentityProvider",
+      "identityProvider",
       {
         url: "https://token.actions.githubusercontent.com",
         clientIds: ["sts.amazonaws.com"],
@@ -16,7 +16,7 @@ export class GithubActionsRoleStack extends Stack {
     );
 
     // IAM Role assumed by Github Actions
-    const githubRole = new iam.Role(this, "GithubActionsRole", {
+    const githubRole = new iam.Role(this, "githubActionsRole", {
       roleName: "github-actions-iam-role",
       description: "IAM Role for Github Actions to assume",
       assumedBy: new iam.OpenIdConnectPrincipal(
